@@ -1,4 +1,6 @@
-streamlit==1.37.1
-scikit-learn==1.5.1
-keras==3.5.0
-tensorflow==2.17.0
+streamlit==1.40.2
+matplotlib==3.8.0
+matplotlib-inline==0.1.7
+matplotlib-venn==1.1.1
+numpy==1.26.4
+scipy==1.13.1
