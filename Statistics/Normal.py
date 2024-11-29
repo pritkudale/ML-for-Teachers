@@ -1,5 +1,4 @@
-# prompt: publish it on stramlit
-
+!pip install matplotlib numpy scipy ipywidgets streamlit
 import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
