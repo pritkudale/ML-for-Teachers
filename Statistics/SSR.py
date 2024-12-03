@@ -25,10 +25,11 @@ y_coords = [p1[1], p2[1], p3[1]]
 # Streamlit app
 st.title("Interactive Plot of Points, Fitted Line, and Residuals")
 
-# Interactive sliders for w0, w1, and w2
-w0 = st.slider("w0", -5.0, 5.0, 0.0, step=0.1)
-w1 = st.slider("w1", -5.0, 5.0, -1.0, step=0.1)
-w2 = st.slider("w2", 0.1, 5.0, 1.0, step=0.1)
+# Interactive sliders for w0, w1, and w2 in a single line
+w0, w1, w2 = st.columns(3)
+w0 = w0.slider("w0", -5.0, 5.0, 0.0, step=0.1)
+w1 = w1.slider("w1", -5.0, 5.0, -1.0, step=0.1)
+w2 = w2.slider("w2", 0.1, 5.0, 1.0, step=0.1)
 
 
 def plot_data_line_residuals_and_ssr(w0, w1, w2):
