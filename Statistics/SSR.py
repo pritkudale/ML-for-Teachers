@@ -32,7 +32,6 @@ w2 = st.slider("w2", 0.1, 5.0, 1.0, step=0.1)
 
 
 def plot_data_line_residuals_and_ssr(w0, w1, w2):
-    ef plot_data_line_residuals_and_ssr(w0, w1, w2):
     # Generate x values for the line
     x_line = np.linspace(0, 10, 100)
     y_line = (-w0 - w1 * x_line) / w2
