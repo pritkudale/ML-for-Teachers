@@ -47,7 +47,7 @@ def plot_data_line_residuals_and_ssr(w0, w1, w2):
     sum_squared_residuals = sum(r**2 for r in residuals)
 
     # Create subplots in a single row
-    fig, axes = plt.subplots(2, 4, figsize=(20, 5))  # Adjust figure size as needed
+    fig, axes = plt.subplots(1, 4, figsize=(40, 5))  # Adjust figure size as needed
 
     # Plot 1: Data, line, and residuals
     axes[0].scatter(x_coords, y_coords, marker='o', label='Data Points')
@@ -94,7 +94,7 @@ def plot_data_line_residuals_and_ssr(w0, w1, w2):
     axes[3].grid(True)
     axes[3].legend()
 
-    #plt.tight_layout()
+    plt.tight_layout()
     st.pyplot(plt) # Use st.pyplot to display the plot in Streamlit
 
 
