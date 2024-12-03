@@ -47,7 +47,7 @@ def plot_data_line_residuals_and_ssr(w0, w1, w2):
     sum_squared_residuals = sum(r**2 for r in residuals)
 
     # Create subplots in a single row
-    fig, axes = plt.subplots(2, 2, figsize=(20, 10))  # Adjust figure size as needed
+    fig, axes = plt.subplots(2, 2, figsize=(20, 15))  # Adjust figure size as needed
 
     # Plot 1: Data, line, and residuals
     axes[0,0].scatter(x_coords, y_coords, marker='o', label='Data Points')
