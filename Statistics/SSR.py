@@ -47,52 +47,52 @@ def plot_data_line_residuals_and_ssr(w0, w1, w2):
     sum_squared_residuals = sum(r**2 for r in residuals)
 
     # Create subplots in a single row
-    fig, axes = plt.subplots(1, 4, figsize=(20, 8))  # Adjust figure size as needed
+    fig, axes = plt.subplots(2, 2, figsize=(20, 5))  # Adjust figure size as needed
 
     # Plot 1: Data, line, and residuals
     axes[0].scatter(x_coords, y_coords, marker='o', label='Data Points')
     axes[0].plot(x_line, y_line, color='red', label='Fitted Line')
     for i in range(len(x_coords)):
-        axes[0].plot([x_coords[i], x_coords[i]], [y_coords[i], y_line[np.argmin(np.abs(x_line - x_coords[i]))]], color='blue', linestyle='--', linewidth=1, label='Residuals' if i == 0 else "")
-    axes[0].set_xlabel('X-axis')
-    axes[0].set_ylabel('Y-axis')
-    axes[0].set_title(f'Data, Line, Residuals (SSR = {sum_squared_residuals:.2f})')
-    axes[0].set_xlim(0, 8)
-    axes[0].set_ylim(0, 10)
-    axes[0].legend()
+        axes[0,0].plot([x_coords[i], x_coords[i]], [y_coords[i], y_line[np.argmin(np.abs(x_line - x_coords[i]))]], color='blue', linestyle='--', linewidth=1, label='Residuals' if i == 0 else "")
+    axes[0,0].set_xlabel('X-axis')
+    axes[0,0].set_ylabel('Y-axis')
+    axes[0,0].set_title(f'Data, Line, Residuals (SSR = {sum_squared_residuals:.2f})')
+    axes[0,0].set_xlim(0, 8)
+    axes[0,0].set_ylim(0, 10)
+    axes[0,0].legend()
 
     # Plot 2: SSR vs w0
     w0_values = np.linspace(-5, 5, 100)
     ssr_values = [sum((y_coords[i] - (-w0_val - w1 * x_coords[i]) / w2)**2 for i in range(len(x_coords))) for w0_val in w0_values]
-    axes[1].plot(w0_values, ssr_values)
-    axes[1].scatter(w0, sum_squared_residuals, color='red', marker='o', s=50, label=f'Current w0 ({w0:.2f})')
-    axes[1].set_xlabel("w0")
-    axes[1].set_ylabel("SSR")
-    axes[1].set_title("SSR vs w0")
-    axes[1].grid(True)
-    axes[1].legend()
+    axes[0,1].plot(w0_values, ssr_values)
+    axes[0,1].scatter(w0, sum_squared_residuals, color='red', marker='o', s=50, label=f'Current w0 ({w0:.2f})')
+    axes[0,1].set_xlabel("w0")
+    axes[0,1].set_ylabel("SSR")
+    axes[0,1].set_title("SSR vs w0")
+    axes[0,1].grid(True)
+    axes[0,1].legend()
 
     # Plot 3: SSR vs w1
     w1_values = np.linspace(-5, 5, 100)
     ssr1_values = [sum((y_coords[i] - (-w0 - w1_val * x_coords[i]) / w2)**2 for i in range(len(x_coords))) for w1_val in w1_values]
-    axes[2].plot(w1_values, ssr1_values)
-    axes[2].scatter(w1, sum_squared_residuals, color='red', marker='o', s=50, label=f'Current w1 ({w1:.2f})')
-    axes[2].set_xlabel("w1")
-    axes[2].set_ylabel("SSR")
-    axes[2].set_title("SSR vs w1")
-    axes[2].grid(True)
-    axes[2].legend()
+    axes[1,0].plot(w1_values, ssr1_values)
+    axes[1,0].scatter(w1, sum_squared_residuals, color='red', marker='o', s=50, label=f'Current w1 ({w1:.2f})')
+    axes[1,0].set_xlabel("w1")
+    axes[1,0].set_ylabel("SSR")
+    axes[1,0].set_title("SSR vs w1")
+    axes[1,0].grid(True)
+    axes[1,0].legend()
 
     # Plot 4: SSR vs w2
     w2_values = np.linspace(0.1, 5, 100)
     ssr2_values = [sum((y_coords[i] - (-w0 - w1 * x_coords[i]) / w2_val)**2 for i in range(len(x_coords))) for w2_val in w2_values]
-    axes[3].plot(w2_values, ssr2_values)
-    axes[3].scatter(w2, sum_squared_residuals, color='red', marker='o', s=50, label=f'Current w2 ({w2:.2f})')
-    axes[3].set_xlabel("w2")
-    axes[3].set_ylabel("SSR")
-    axes[3].set_title("SSR vs w2")
-    axes[3].grid(True)
-    axes[3].legend()
+    axes[1,1].plot(w2_values, ssr2_values)
+    axes[1,1].scatter(w2, sum_squared_residuals, color='red', marker='o', s=50, label=f'Current w2 ({w2:.2f})')
+    axes[1,1].set_xlabel("w2")
+    axes[1,1].set_ylabel("SSR")
+    axes[1,1].set_title("SSR vs w2")
+    axes[1,1].grid(True)
+    axes[1,1].legend()
 
     plt.tight_layout()
     st.pyplot(plt) # Use st.pyplot to display the plot in Streamlit
