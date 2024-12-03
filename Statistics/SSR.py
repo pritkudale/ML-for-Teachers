@@ -50,8 +50,8 @@ def plot_data_line_residuals_and_ssr(w0, w1, w2):
     fig, axes = plt.subplots(2, 2, figsize=(20, 10))  # Adjust figure size as needed
 
     # Plot 1: Data, line, and residuals
-    axes[0].scatter(x_coords, y_coords, marker='o', label='Data Points')
-    axes[0].plot(x_line, y_line, color='red', label='Fitted Line')
+    axes[0,0].scatter(x_coords, y_coords, marker='o', label='Data Points')
+    axes[0,0].plot(x_line, y_line, color='red', label='Fitted Line')
     for i in range(len(x_coords)):
         axes[0,0].plot([x_coords[i], x_coords[i]], [y_coords[i], y_line[np.argmin(np.abs(x_line - x_coords[i]))]], color='blue', linestyle='--', linewidth=1, label='Residuals' if i == 0 else "")
     axes[0,0].set_xlabel('X-axis')
