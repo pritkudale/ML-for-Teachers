@@ -94,7 +94,7 @@ def plot_data_line_residuals_and_ssr(w0, w1, w2):
     axes[3].grid(True)
     axes[3].legend()
 
-    plt.tight_layout()
+    #plt.tight_layout()
     st.pyplot(plt) # Use st.pyplot to display the plot in Streamlit
 
 
